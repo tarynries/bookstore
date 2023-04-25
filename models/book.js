@@ -12,7 +12,7 @@ class Book {
 
   static async findOne(isbn) {
     const bookRes = await db.query(
-        `SELECT isbn,
+      `SELECT isbn,
                 amazon_url,
                 author,
                 language,
@@ -39,7 +39,7 @@ class Book {
 
   static async findAll() {
     const booksRes = await db.query(
-        `SELECT isbn,
+      `SELECT isbn,
                 amazon_url,
                 author,
                 language,
@@ -149,7 +149,7 @@ class Book {
       `DELETE FROM books 
          WHERE isbn = $1 
          RETURNING isbn`,
-        [isbn]);
+      [isbn]);
 
     if (result.rows.length === 0) {
       throw { message: `There is no book with an isbn '${isbn}`, status: 404 }
